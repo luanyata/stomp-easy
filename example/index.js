@@ -1,6 +1,6 @@
 import { wsComponent } from "../";
 
-wsComponent.connect("url_ws", "topic");
+wsComponent.connect("url_ws", "topic", "fnOptional");
 
 wsComponent.disconnect();
 

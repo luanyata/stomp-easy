@@ -4,6 +4,18 @@ Lib simplificada para trabalhar com Stomp e o Sockjs-Client
 
 _Observação: Versão atual utiliza token para autenticação_
 
+## Instação
+
+_Observação: Como a lib está em processo de desenvolvimento e não temos a primeira versão seu pacote ainda não foi portado para o repositorio do NPM._
+
+No seu `package.json` em dependencias adicione a linha:
+
+```
+stomp-easy": "git+https://github.com/luanyata/stomp-easy.git"
+```
+
+e depois faça a instalação do pacote com `npm install`.
+
 ## Importação:
 
 ```js
