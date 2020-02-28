@@ -1,0 +1,45 @@
+{
+  "name": "easy-stomp",
+  "version": "1.0.0",
+  "description": "Lib simplificada para trabalhar com Stomp e o Sockjs-Client",
+  "main": "index.js",
+  "scripts": {
+    "release": "standard-version",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Luan Lima <luanyata@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "sockjs-client": "^1.4.0",
+    "stompjs": "^2.3.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "cz-conventional-changelog": "^3.1.0",
+    "husky": "^4.2.3",
+    "standard-version": "^7.1.0"
+  },
+  "directories": {
+    "example": "example"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luanyata/stomp-easy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luanyata/stomp-easy/issues"
+  },
+  "homepage": "https://github.com/luanyata/stomp-easy#readme"
+}
