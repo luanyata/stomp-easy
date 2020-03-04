@@ -15,7 +15,11 @@ stompEasy.connect = connect = (webSocketEndPoint, topic, fnLoadToken) => {
   const stompClient = over(ws);
 
   stompClient.connect(
-    { token: fnLoadToken ? fnLoadToken() : sessionStorage.getItem("token") },
+    {
+      token: fnLoadToken
+        ? fnLoadToken()
+        : `Bearer ${sessionStorage.getItem("token")}`
+    },
     () => {
       stompClient.subscribe(topic, sdkEvent => {
         received(sdkEvent);
