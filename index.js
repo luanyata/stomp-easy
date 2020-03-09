@@ -8,11 +8,13 @@ const stompEasy = {
   eventReceived: null
 };
 
+let stompClient = null;
+
 stompEasy.connect = connect = (webSocketEndPoint, topic, fnLoadToken) => {
   console.log("Initialize WebSocket Connection");
 
   let ws = new SockJS(webSocketEndPoint);
-  const stompClient = over(ws);
+  stompClient = over(ws);
 
   stompClient.connect(
     {
@@ -30,8 +32,8 @@ stompEasy.connect = connect = (webSocketEndPoint, topic, fnLoadToken) => {
 };
 
 stompEasy.disconnect = disconnect = () => {
-  if (this.stompClient !== null) {
-    this.stompClient.disconnect();
+  if (stompClient !== null) {
+    stompClient.disconnect();
   }
   console.log("Disconnected");
 };
@@ -45,7 +47,7 @@ const errorCallBack = error => {
 
 stompEasy.eventSend = send = (topic, message) => {
   console.log("calling logout api via web socket");
-  this.stompClient.send(topic, {}, JSON.stringify(message));
+  stompClient.send(topic, {}, JSON.stringify(message));
 };
 
 stompEasy.eventReceived = received = message => {
