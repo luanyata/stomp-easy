@@ -5,7 +5,8 @@ const stompEasy = {
   connect: null,
   disconnect: null,
   eventSend: null,
-  eventReceived: null
+  eventReceived: null,
+  subscribe: null
 };
 
 let stompClient = null;
@@ -23,12 +24,23 @@ stompEasy.connect = connect = (webSocketEndPoint, topic, fnLoadToken) => {
         : `Bearer ${sessionStorage.getItem("token")}`
     },
     () => {
-      stompClient.subscribe(topic, sdkEvent => {
-        received(sdkEvent);
-      });
+      subscribe(topic);
     },
     errorCallBack
   );
+};
+
+stompEasy.subscribe = subscribe = topic => {
+  stompClient.subscribe(topic, message => received(message));
+};
+
+stompEasy.eventSend = send = (topic, message) => {
+  console.log("calling logout api via web socket");
+  stompClient.send(topic, {}, JSON.stringify(message));
+};
+
+stompEasy.eventReceived = received = message => {
+  console.log("Message Recieved from Server :: " + message);
 };
 
 stompEasy.disconnect = disconnect = () => {
@@ -43,15 +55,6 @@ const errorCallBack = error => {
   setTimeout(() => {
     connect();
   }, 5000);
-};
-
-stompEasy.eventSend = send = (topic, message) => {
-  console.log("calling logout api via web socket");
-  stompClient.send(topic, {}, JSON.stringify(message));
-};
-
-stompEasy.eventReceived = received = message => {
-  console.log("Message Recieved from Server :: " + message);
 };
 
 module.exports = { stompEasy };
