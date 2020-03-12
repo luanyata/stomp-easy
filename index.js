@@ -31,7 +31,7 @@ stompEasy.connect = connect = (webSocketEndPoint, topic, fnLoadToken) => {
 };
 
 stompEasy.subscribe = subscribe = topic => {
-  stompClient.subscribe(topic, message => received(message));
+  return stompClient.subscribe(topic, message => received(message));
 };
 
 stompEasy.eventSend = send = (topic, message) => {
