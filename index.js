@@ -40,7 +40,7 @@ stompEasy.eventSend = send = (topic, message) => {
 };
 
 stompEasy.eventReceived = received = message => {
-  console.log("Message Recieved from Server :: " + message);
+  return message;
 };
 
 stompEasy.disconnect = disconnect = () => {
