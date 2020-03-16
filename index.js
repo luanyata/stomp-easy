@@ -1,5 +1,6 @@
 const SockJS = require("sockjs-client");
 const { over } = require("stompjs");
+const { show } = require("izitoast").default;
 
 const stompEasy = {
   connect: null,
@@ -13,6 +14,10 @@ let stompClient = null;
 
 stompEasy.connect = connect = (webSocketEndPoint, topic, fnLoadToken) => {
   console.log("Initialize WebSocket Connection");
+  show({
+    title: "WebSocket",
+    message: "Initialize WebSocket Connection"
+  });
 
   let ws = new SockJS(webSocketEndPoint);
   stompClient = over(ws);
@@ -31,6 +36,7 @@ stompEasy.connect = connect = (webSocketEndPoint, topic, fnLoadToken) => {
 };
 
 stompEasy.subscribe = subscribe = topic => {
+  show({ title: "Hey", message: "Luan" });
   return stompClient.subscribe(topic, message => received(message));
 };
 
