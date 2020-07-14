@@ -16,7 +16,7 @@
     "stompjs": "^2.3.3"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
+    "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^8.3.4",
     "cz-conventional-changelog": "^3.1.0",
     "husky": "^4.2.3",
